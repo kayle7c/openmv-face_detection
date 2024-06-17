@@ -19,6 +19,8 @@ port_names: Iterable[str] = []         #已经搜索到的串口
 data=None
 now_time=None
 
+record_path=""                        #记录文档的路径,文件格式为txt格式
+
 def warning():
     global ui
     winsound.PlaySound(r"E:\pyqt5\电子报警.wav",winsound.SND_FILENAME)
@@ -44,7 +46,7 @@ def add():
         print('add')
 
 def search():
-    os.startfile("C:\\Users\\罗晶晶\\Desktop\\record.txt")
+    os.startfile(record_path)
 
     print('search')
 
@@ -81,7 +83,7 @@ def receive_thread():
             time.sleep(0.5)
 
 def write_log(data):
-    with open("C:\\Users\\罗晶晶\\Desktop\\record.txt", 'a') as file:
+    with open(record_path, 'a') as file:
         file.write(now_time+":"+data+'\n')
 
 def receive_handle(data):
